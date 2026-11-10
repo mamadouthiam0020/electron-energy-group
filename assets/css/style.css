@@ -1433,17 +1433,42 @@ body.nav-open .nav-toggle span:nth-child(3) {
   border-color: var(--bleu);
 }
 
-.partners-strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(1.2rem, 3vw, 2.5rem);
+/* Bandeau défilant des partenaires (accueil) */
+.partners-marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.partners-strip img {
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-defilement 50s linear infinite;
+}
+
+.partners-marquee:hover .marquee-track,
+.partners-marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.2rem, 4.5vw, 3.8rem);
+  padding-right: clamp(2.2rem, 4.5vw, 3.8rem);
+}
+
+.marquee-group img {
   display: block;
-  width: 150px;
+  width: 145px;
   height: auto;
+}
+
+@keyframes marquee-defilement {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* ----------------------------- Contact ----------------------------- */
@@ -1878,8 +1903,8 @@ textarea[aria-invalid='true'] {
     left: 1.1rem;
   }
 
-  .partners-strip img {
-    width: 118px;
+  .marquee-group img {
+    width: 110px;
   }
 }
 
@@ -1911,6 +1936,13 @@ textarea[aria-invalid='true'] {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .partners-marquee .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 
   .realisation-card:hover .media img,
