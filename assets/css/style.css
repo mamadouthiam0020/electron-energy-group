@@ -735,7 +735,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 }
 
 .realisation-card .media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--brume);
 }
@@ -789,7 +789,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2px;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--brume);
 }
@@ -824,6 +824,8 @@ body.nav-open .nav-toggle span:nth-child(3) {
 .media-pair--portrait {
   aspect-ratio: 3 / 2;
 }
+/* Note : .media-pair et .media utilisent le même ratio 3/2 — toutes les
+   boîtes d'images des cartes ont la même hauteur dans les grilles. */
 
 /* Réalisation mise en avant (sombre) */
 .feature-realisation {
@@ -1185,7 +1187,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .bornes-strip::-webkit-scrollbar {
@@ -1420,8 +1422,8 @@ body.nav-open .nav-toggle span:nth-child(3) {
 .partner-tile img {
   display: block;
   width: 100%;
-  max-width: 178px;
-  height: auto;
+  height: 64px;
+  object-fit: contain;
 }
 
 .partner-tile--dark {
@@ -1461,8 +1463,8 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .marquee-group img {
   display: block;
-  width: 145px;
-  height: auto;
+  height: 52px;
+  width: auto;
 }
 
 @keyframes marquee-defilement {
@@ -1878,10 +1880,6 @@ textarea[aria-invalid='true'] {
     grid-column: auto;
   }
 
-  .media-pair {
-    aspect-ratio: 16 / 10;
-  }
-
   .contact-aside {
     grid-template-columns: 1fr;
   }
@@ -1904,7 +1902,8 @@ textarea[aria-invalid='true'] {
   }
 
   .marquee-group img {
-    width: 110px;
+    height: 40px;
+    width: auto;
   }
 }
 
