@@ -34,21 +34,55 @@ entreprise sénégalaise spécialisée dans les infrastructures électriques, la
     └── img/            # Photos AVIF/WebP/JPG, logos partenaires, favicons
 ```
 
+## Déploiement (Render)
+
+Le site est publié comme **site statique** sur Render, décrit par le fichier
+[`render.yaml`](render.yaml) à la racine du dépôt (Blueprint Render).
+
+1. Sur [dashboard.render.com](https://dashboard.render.com), choisir **New → Blueprint**.
+2. Sélectionner le dépôt GitHub `mamadouthiam0020/electron-energy-group`
+   et autoriser l'accès si demandé.
+3. Nommer le groupe de Blueprint (ex. `electron-energy-group`) puis **Apply**.
+
+Render crée le service `electron-energy-group` et sert le site sur son CDN
+global à l'adresse **https://electron-energy-group.onrender.com**. Chaque `git
+push` sur `main` déclenche automatiquement une nouvelle publication
+(`autoDeployTrigger: commit`).
+
+Le Blueprint configure aussi :
+
+- redirection `301` de `/index.html` vers `/` (contenu dupliqué) ;
+- en-têtes de sécurité (`X-Content-Type-Options`, `X-Frame-Options`,
+  `Referrer-Policy`) ;
+- politiques de cache par type de fichier (HTML toujours revalidé, polices
+  immuables, images 7 jours, CSS/JS 1 jour).
+
+### Domaine personnalisé
+
+Dans le tableau de bord Render (service → **Settings → Custom Domains**),
+ajouter le domaine définitif. Les balises `canonical`, Open Graph, le JSON-LD
+de l'accueil, `robots.txt` et `sitemap.xml` utilisent actuellement
+`https://electron-energy-group.onrender.com` : les remplacer par le domaine
+définitif (recherche/remplacement global du texte
+`electron-energy-group.onrender.com`), puis ajouter le domaine dans
+`render.yaml` :
+
+```yaml
+    domains:
+      - electron-energy-group.com
+```
+
 ## À remplacer avant mise en ligne
 
-1. **Domaine** — le domaine `https://electron-energy-group.example` est un espace
-   réservé. Il apparaît dans les balises `canonical`, les balises Open Graph, le
-   JSON-LD de l'accueil, `robots.txt` et `sitemap.xml`. Remplacez-le par le domaine
-   définitif.
-2. **Coordonnées** — la page `contact.html` affiche volontairement des mentions
-   « à venir » pour le Sénégal, la France, l'e-mail et le téléphone. Aucune
-   coordonnée n'a été inventée. Complétez ces champs avec les informations officielles.
-3. **Formulaire** — le formulaire de contact est piloté par l'attribut
+1. **Coordonnées** — la page `contact.html` affiche des mentions
+   « à venir » pour le Sénégal, la France et l'e-mail. Le téléphone est déjà
+   publié. Complétez les champs restants avec les informations officielles.
+2. **Formulaire** — le formulaire de contact est piloté par l'attribut
    `data-endpoint` sur `<form id="formulaire-contact">` dans `contact.html`.
    Tant que cet attribut est vide, la validation fonctionne mais aucun envoi n'est
    effectué : un message d'information s'affiche. Renseignez l'URL d'un service
    compatible (Formspree, Netlify Forms, API interne…) pour activer l'envoi.
-4. **Mentions légales / politique de confidentialité** — non demandées dans le
+3. **Mentions légales / politique de confidentialité** — non demandées dans le
    brief. Si elles sont nécessaires, ajoutez les pages correspondantes et les liens
    dans le pied de page.
 

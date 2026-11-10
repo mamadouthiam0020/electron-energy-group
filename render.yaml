@@ -1,0 +1,63 @@
+# Blueprint Render — site statique Electron Energy Group
+# Documentation : https://render.com/docs/blueprint-spec
+#
+# Après synchronisation, le site est servi sur son CDN global à l'adresse :
+# https://electron-energy-group.onrender.com
+# (le sous-domaine découle du champ `name` ci-dessous)
+
+services:
+  - type: web
+    name: electron-energy-group
+    runtime: static
+
+    # Aucune étape de build : les fichiers HTML/CSS/JS sont publiés tels quels.
+    buildCommand: echo "Site statique — aucune build nécessaire"
+
+    # Le site est publié depuis la racine du dépôt.
+    staticPublishPath: .
+
+    autoDeployTrigger: commit
+
+    routes:
+      # Éviter le contenu dupliqué : /index.html redirige vers /
+      - type: redirect
+        source: /index.html
+        destination: /
+
+    headers:
+      # En-têtes de sécurité (tous chemins)
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+
+      # Pages HTML : toujours revalider pour servir la dernière version publiée
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+
+      # Polices : immuables (jamais modifiées)
+      - path: /assets/fonts/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+
+      # Images : cache d'une semaine
+      - path: /assets/img/*
+        name: Cache-Control
+        value: public, max-age=604800
+
+      # CSS / JS : cache d'un jour
+      - path: /assets/css/*
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /assets/js/*
+        name: Cache-Control
+        value: public, max-age=86400

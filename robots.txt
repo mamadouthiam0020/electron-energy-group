@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://electron-energy-group.example/sitemap.xml
+Sitemap: https://electron-energy-group.onrender.com/sitemap.xml
