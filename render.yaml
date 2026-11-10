@@ -49,15 +49,15 @@ services:
         name: Cache-Control
         value: public, max-age=31536000, immutable
 
-      # Images : cache d'une semaine
+      # Images : cache d'un jour (les fichiers sont parfois modifiés sans être renommés)
       - path: /assets/img/*
         name: Cache-Control
-        value: public, max-age=604800
+        value: public, max-age=86400
 
-      # CSS / JS : cache d'un jour
+      # CSS / JS : cache de 4 heures
       - path: /assets/css/*
         name: Cache-Control
-        value: public, max-age=86400
+        value: public, max-age=14400
       - path: /assets/js/*
         name: Cache-Control
-        value: public, max-age=86400
+        value: public, max-age=14400

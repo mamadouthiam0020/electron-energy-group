@@ -55,7 +55,13 @@ Le Blueprint configure aussi :
 - en-têtes de sécurité (`X-Content-Type-Options`, `X-Frame-Options`,
   `Referrer-Policy`) ;
 - politiques de cache par type de fichier (HTML toujours revalidé, polices
-  immuables, images 7 jours, CSS/JS 1 jour).
+  immuables, images 1 jour, CSS/JS 4 heures).
+
+**Important — cache des assets** : quand une image, le CSS ou le JS est
+modifié **sans changer de nom de fichier**, incrémentez le paramètre de
+version dans les pages (ex. `style.css?v=2` → `?v=3`,
+`partenaire-schneider.webp?v=2` → `?v=3`). Sans cela, les navigateurs des
+visiteurs peuvent continuer à servir l'ancienne version depuis leur cache.
 
 ### Domaine personnalisé
 
