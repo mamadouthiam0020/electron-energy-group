@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Electron Energy Group | Parlons de votre projet</title>
+  <meta name="description" content="Un projet d'infrastructure électrique, de station de recharge ou de transition énergétique ? Contactez Electron Energy Group et décrivez votre besoin.">
+  <link rel="canonical" href="https://electron-energy-group.example/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Electron Energy Group">
+  <meta property="og:title" content="Contact — Electron Energy Group">
+  <meta property="og:description" content="Parlons de votre projet : infrastructures électriques, bornes de recharge, efficacité énergétique et formations.">
+  <meta property="og:url" content="https://electron-energy-group.example/contact.html">
+  <meta property="og:image" content="https://electron-energy-group.example/assets/img/photo-mission.jpg">
+  <meta property="og:image:alt" content="Infrastructures électriques déployées par Electron Energy Group">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#008af9">
+  <link rel="icon" href="assets/img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header" id="entete">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Electron Energy Group — accueil">
+        <img src="assets/img/logo-eeg-320.png" alt="Electron Energy Group" width="320" height="127">
+      </a>
+
+      <nav class="main-nav" id="nav-principal" aria-label="Navigation principale">
+        <ul>
+          <li><a class="nav-link" href="index.html">Accueil</a></li>
+          <li><a class="nav-link" href="a-propos.html">À propos</a></li>
+          <li><a class="nav-link" href="expertises.html">Nos expertises</a></li>
+          <li><a class="nav-link" href="realisations.html">Nos réalisations</a></li>
+          <li><a class="nav-link" href="partenaires.html">Nos partenaires</a></li>
+          <li><a class="nav-link" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <a class="btn btn--primary nav-cta" href="contact.html">Parlons de votre projet</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Ouvrir le menu de navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="container">
+        <p class="kicker">Contact</p>
+        <h1>Parlons de votre projet.</h1>
+        <p class="lead">Une question, un projet d'infrastructure ou de recharge ? Décrivez-nous votre besoin : nos équipes vous répondent.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-formulaire">
+      <div class="container contact-layout">
+        <div class="reveal">
+          <h2 id="titre-formulaire" style="font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:.6rem">Décrivez votre besoin</h2>
+          <p class="lead" style="margin-bottom:1.6rem">Plus votre demande est précise, plus notre réponse sera utile. Les champs marqués <span class="requis" aria-hidden="true">*</span> sont obligatoires.</p>
+
+          <form class="contact-form" id="formulaire-contact" data-endpoint="" method="post" action="#">
+            <div class="form-grid">
+              <div class="field">
+                <label for="nom">Nom et prénom <span class="requis" aria-hidden="true">*</span></label>
+                <input type="text" id="nom" name="nom" autocomplete="name" required>
+              </div>
+
+              <div class="field">
+                <label for="societe">Société / organisation</label>
+                <input type="text" id="societe" name="societe" autocomplete="organization">
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail <span class="requis" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+
+              <div class="field">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" autocomplete="tel">
+              </div>
+
+              <div class="field field--full">
+                <label for="sujet">Sujet <span class="requis" aria-hidden="true">*</span></label>
+                <select id="sujet" name="sujet" required>
+                  <option value="" selected disabled>Sélectionnez un sujet</option>
+                  <option value="infrastructures">Infrastructures électriques</option>
+                  <option value="irve">Transition énergétique &amp; IRVE</option>
+                  <option value="efficacite">Efficacité énergétique</option>
+                  <option value="ingenierie">Ingénierie &amp; services</option>
+                  <option value="formation">Formations</option>
+                  <option value="partenariat">Partenariat</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="field field--full">
+                <label for="message">Votre message <span class="requis" aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+                <span class="aide">Contexte, site concerné, puissance visée, échéance…</span>
+              </div>
+
+              <div class="field field--full">
+                <label class="case" for="consentement">
+                  <input type="checkbox" id="consentement" name="consentement" value="oui" required>
+                  <span>J'accepte que les informations transmises soient utilisées pour répondre à ma demande. <span class="requis" aria-hidden="true">*</span></span>
+                </label>
+              </div>
+
+              <div class="field field--full">
+                <button class="btn btn--primary" type="submit">Envoyer ma demande</button>
+                <p class="aide" style="margin-top:.5rem">Les champs marqués d'un astérisque sont obligatoires.</p>
+              </div>
+            </div>
+
+            <div class="form-status" id="statut-formulaire" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <aside class="contact-aside" aria-labelledby="titre-coordonnees">
+          <div class="info-card reveal" data-delai="1">
+            <h2 id="titre-coordonnees">Nos implantations</h2>
+            <p>Nos collaborateurs sont basés au Sénégal et en France.</p>
+            <div class="info-row">
+              <strong>Sénégal</strong>
+              <span>Coordonnées à venir</span>
+            </div>
+            <div class="info-row">
+              <strong>France</strong>
+              <span>Coordonnées à venir</span>
+            </div>
+            <div class="info-row">
+              <strong>E-mail</strong>
+              <span>À venir</span>
+            </div>
+            <div class="info-row">
+              <strong>Téléphone</strong>
+              <span><a href="tel:+221777931337">+221 77 793 13 37</a></span>
+            </div>
+            <p class="section-note">Les autres coordonnées officielles seront publiées prochainement sur cette page.</p>
+          </div>
+
+          <div class="info-card reveal" data-delai="2">
+            <h3>Ce que vous pouvez nous confier</h3>
+            <ul class="info-list">
+              <li>Infrastructures électriques &amp; réseaux tertiaires</li>
+              <li>Stations de recharge et projets IRVE</li>
+              <li>Efficacité énergétique et pilotage</li>
+              <li>Formations et accompagnement</li>
+              <li>Partenariats et co-traitances</li>
+            </ul>
+          </div>
+
+          <figure class="figure reveal" data-delai="3">
+            <div class="contact-photo">
+              <picture>
+                <source srcset="assets/img/photo-merci.avif" type="image/avif">
+                <source srcset="assets/img/photo-merci.webp" type="image/webp">
+                <img src="assets/img/photo-merci.jpg" alt="Electron Energy Group" width="900" height="1200" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Premier échange -->
+    <section class="section section--alt" aria-labelledby="titre-echange">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy reveal">
+            <p class="kicker">Le premier échange</p>
+            <h2 id="titre-echange">Comment nous travaillons</h2>
+            <p class="lead">Un projet se construit étape par étape, en partageant les informations clés avec le client.</p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service reveal">
+            <h3>01 — Nous vous écoutons</h3>
+            <p>Audit technique sur le site du client et échange sur le projet.</p>
+          </article>
+          <article class="service reveal" data-delai="1">
+            <h3>02 — Nous proposons</h3>
+            <p>Proposition d'une station adaptée au site ou d'une solution d'infrastructure.</p>
+          </article>
+          <article class="service reveal" data-delai="2">
+            <h3>03 — Nous planifions</h3>
+            <p>Définition d'une date d'installation, préparation et organisation des travaux.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band" aria-labelledby="titre-cta">
+      <div class="cta-band-bg" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/bande-travaillons.avif" type="image/avif">
+          <source srcset="assets/img/bande-travaillons.webp" type="image/webp">
+          <img src="assets/img/bande-travaillons.jpg" alt="" width="1536" height="615" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="container cta-inner">
+        <div>
+          <h2 id="titre-cta">Travaillons ensemble.</h2>
+          <p>Une question, un projet, une collaboration ? Nos équipes vous répondent.</p>
+        </div>
+        <a class="btn btn--light" href="expertises.html">Découvrir nos expertises</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/logo-eeg-blanc-320.png" alt="Electron Energy Group" width="320" height="127" loading="lazy">
+        <p>Faciliter l'accès aux infrastructures électriques à tous. Pionnière de la mobilité électrique au Sénégal, EEG conçoit et déploie des infrastructures durables.</p>
+      </div>
+
+      <nav aria-label="Navigation du pied de page">
+        <p class="footer-title">Navigation</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="expertises.html">Nos expertises</a></li>
+          <li><a href="realisations.html">Nos réalisations</a></li>
+          <li><a href="partenaires.html">Nos partenaires</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <p class="footer-title">Expertises</p>
+        <ul class="footer-list">
+          <li><a href="expertises.html#infrastructures">Infrastructures électriques</a></li>
+          <li><a href="expertises.html#transition">Transition énergétique</a></li>
+          <li><a href="expertises.html#efficacite">Efficacité énergétique</a></li>
+          <li><a href="expertises.html#ingenierie">Ingénierie &amp; services</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-title">Présence</p>
+        <p class="footer-note"><strong>Sénégal &amp; France</strong>Nos collaborateurs sont basés au Sénégal et en France.</p>
+        <a class="footer-cta" href="contact.html">Parlons de votre projet →</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="annee">2026</span> Electron Energy Group. Tous droits réservés.</p>
+      <p>Entreprise 100 % sénégalaise — créée en 2023.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

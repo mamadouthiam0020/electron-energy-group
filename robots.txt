@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://electron-energy-group.example/sitemap.xml
