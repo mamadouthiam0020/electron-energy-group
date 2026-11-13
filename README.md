@@ -44,18 +44,20 @@ Le site est publié comme **site statique** sur Render, décrit par le fichier
    et autoriser l'accès si demandé.
 3. Nommer le groupe de Blueprint (ex. `electron-energy-group`) puis **Apply**.
 
-Render crée le service `electron-energy-group` et sert le site sur son CDN
-global à l'adresse **https://electron-energy-group.onrender.com**. Chaque `git
-push` sur `main` déclenche automatiquement une nouvelle publication
-(`autoDeployTrigger: commit`).
+Le site est servi sur son CDN global à l'adresse canonique
+**https://www.electron-energy-group.com**. Chaque `git push` sur `main`
+déclenche automatiquement une nouvelle publication (`autoDeployTrigger: commit`).
 
 Le Blueprint configure aussi :
 
-- redirection `301` de `/index.html` vers `/` (contenu dupliqué) ;
-- en-têtes de sécurité (`X-Content-Type-Options`, `X-Frame-Options`,
+- le domaine canonique `www` et la redirection `301` de l'apex
+  `electron-energy-group.com` vers `www` (gérée automatiquement par Render) ;
+- la désactivation du sous-domaine `onrender.com` (`renderSubdomainPolicy: disabled`) ;
+- la redirection `301` de `/index.html` vers `/` (contenu dupliqué) ;
+- les en-têtes de sécurité (`X-Content-Type-Options`, `X-Frame-Options`,
   `Referrer-Policy`) ;
-- politiques de cache par type de fichier (HTML toujours revalidé, polices
-  immuables, images 1 jour, CSS/JS 4 heures).
+- les politiques de cache par type de fichier (HTML toujours revalidé, polices
+  immuables, images 1 jour, CSS/JS 4 heures, fichiers SEO 1 heure).
 
 **Important — cache des assets** : quand une image, le CSS ou le JS est
 modifié **sans changer de nom de fichier**, incrémentez le paramètre de
@@ -63,20 +65,52 @@ version dans les pages (ex. `style.css?v=2` → `?v=3`,
 `partenaire-schneider.webp?v=2` → `?v=3`). Sans cela, les navigateurs des
 visiteurs peuvent continuer à servir l'ancienne version depuis leur cache.
 
-### Domaine personnalisé
+### Domaine et DNS
 
-Dans le tableau de bord Render (service → **Settings → Custom Domains**),
-ajouter le domaine définitif. Les balises `canonical`, Open Graph, le JSON-LD
-de l'accueil, `robots.txt` et `sitemap.xml` utilisent actuellement
-`https://electron-energy-group.onrender.com` : les remplacer par le domaine
-définitif (recherche/remplacement global du texte
-`electron-energy-group.onrender.com`), puis ajouter le domaine dans
-`render.yaml` :
+Le domaine est déjà configuré dans Render. Côté DNS, conserver :
 
-```yaml
-    domains:
-      - electron-energy-group.com
-```
+- `www.electron-energy-group.com` → CNAME vers `electron-energy-group.onrender.com` ;
+- `electron-energy-group.com` → CNAME aplati (Cloudflare) ou enregistrement A
+  Render. L'apex redirige automatiquement vers `www` ;
+- aucun enregistrement AAAA (Render est IPv4 uniquement) ;
+- le proxy Cloudflare en **Full (strict)** si le proxy orange est activé.
+
+## Référencement (SEO)
+
+Le site est prêt pour l'indexation :
+
+- **URL canonique unique** : `https://www.electron-energy-group.com` sur les
+  6 pages, avec `og:url` cohérent ;
+- **`robots.txt`** à la racine, avec l'URL du sitemap ;
+- **`sitemap.xml`** avec les 6 pages et un `lastmod` à mettre à jour à chaque
+  modification de contenu ;
+- **Open Graph / Twitter Cards** avec une image dédiée `assets/img/og-image.jpg`
+  au format 1200 × 630 ;
+- **données structurées JSON-LD** : `Organization`, `WebSite`, `BreadcrumbList`
+  et type de page (`AboutPage`, `CollectionPage`, `ContactPage`) ;
+- **favicon** : `/favicon.ico` à la racine + PNG 16, 32, 48, 96, 192 et 512 px,
+  `apple-touch-icon` 180 px et `site.webmanifest` ;
+- **`renderSubdomainPolicy: disabled`** : le sous-domaine `onrender.com` renvoie
+  404, ce qui évite le contenu dupliqué.
+
+Après la mise en ligne :
+
+1. Ajouter la propriété dans **Google Search Console** puis soumettre
+   `https://www.electron-energy-group.com/sitemap.xml`.
+2. Faire de même dans **Bing Webmaster Tools**.
+3. Demander l'indexation de la page d'accueil (« Inspection de l'URL » →
+   « Demander une indexation »).
+4. Vérifier les données structurées avec le
+   [Rich Results Test](https://search.google.com/test/rich-results) et le
+   [Schema Markup Validator](https://validator.schema.org/).
+5. Vérifier que `https://www.electron-energy-group.com/favicon.ico` répond en
+   200 et que les balises `<link rel="icon">` sont bien présentes. Google met à
+   jour le favicon dans ses résultats après recrawl (quelques jours à quelques
+   semaines) : il n'y a rien d'autre à faire techniquement.
+
+Si Google Search Console demande une validation par balise meta, ajouter la
+balise fournie dans le `<head>` de `index.html` (ou privilégier la validation
+par DNS, qui ne modifie pas le code).
 
 ## À remplacer avant mise en ligne
 

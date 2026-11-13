@@ -1,14 +1,21 @@
 # Blueprint Render — site statique Electron Energy Group
 # Documentation : https://render.com/docs/blueprint-spec
 #
-# Après synchronisation, le site est servi sur son CDN global à l'adresse :
-# https://electron-energy-group.onrender.com
-# (le sous-domaine découle du champ `name` ci-dessous)
+# Domaine principal : https://www.electron-energy-group.com
+# L'apex electron-energy-group.com redirige automatiquement vers www
+# (Render ajoute et gère la redirection à partir du domaine www déclaré).
 
 services:
   - type: web
     name: electron-energy-group
     runtime: static
+
+    # Domaine canonique. Render ajoute automatiquement l'apex et le redirige vers www.
+    domains:
+      - www.electron-energy-group.com
+
+    # Le sous-domaine onrender.com renvoie 404 (évite le contenu dupliqué).
+    renderSubdomainPolicy: disabled
 
     # Aucune étape de build : les fichiers HTML/CSS/JS sont publiés tels quels.
     buildCommand: echo "Site statique — aucune build nécessaire"
@@ -43,6 +50,20 @@ services:
       - path: /
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+
+      # Fichiers SEO et favicon : cache court pour refléter les mises à jour
+      - path: /robots.txt
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /site.webmanifest
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /favicon.ico
+        name: Cache-Control
+        value: public, max-age=86400
 
       # Polices : immuables (jamais modifiées)
       - path: /assets/fonts/*

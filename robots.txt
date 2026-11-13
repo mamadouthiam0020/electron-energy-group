@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://electron-energy-group.onrender.com/sitemap.xml
+# Plan du site
+Sitemap: https://www.electron-energy-group.com/sitemap.xml
