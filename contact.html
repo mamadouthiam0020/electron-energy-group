@@ -39,7 +39,7 @@
   <meta name="apple-mobile-web-app-title" content="Electron Energy Group">
   <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
 {
@@ -118,11 +118,43 @@
   </header>
 
   <main id="contenu">
-    <section class="page-hero">
-      <div class="container">
-        <p class="kicker">Contact</p>
-        <h1>Parlons de votre projet.</h1>
-        <p class="lead">Une question, un projet d'infrastructure ou de recharge ? Décrivez-nous votre besoin : nos équipes vous répondent.</p>
+    <section class="page-hero" aria-labelledby="titre-heros">
+      <div class="hero-backdrop" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/fast-2.avif" type="image/avif">
+          <source srcset="assets/img/fast-2.webp" type="image/webp">
+          <img src="assets/img/fast-2.jpg" alt="" width="900" height="1200" fetchpriority="high" decoding="async">
+        </picture>
+        <span class="hero-glow hero-glow--one"></span>
+        <span class="hero-glow hero-glow--two"></span>
+        <span class="hero-grid-lines"></span>
+      </div>
+
+      <div class="container page-hero-inner">
+        <div class="page-hero-copy">
+          <p class="kicker">Contact</p>
+          <h1 id="titre-heros">Parlons de votre <em>projet.</em></h1>
+          <p class="lead">Une question, un projet d'infrastructure ou de recharge ? Décrivez-nous votre besoin : nos équipes vous répondent.</p>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="tel:+221777931337">Nous appeler</a>
+            <a class="btn btn--ghost" href="expertises.html">Voir nos expertises</a>
+          </div>
+        </div>
+
+        <ul class="page-hero-facts" aria-label="Repères">
+          <li>
+            <span class="fact-value">+221 77 793 13 37</span>
+            <span class="fact-label">Téléphone</span>
+          </li>
+          <li>
+            <span class="fact-value">Sénégal &amp; France</span>
+            <span class="fact-label">Nos implantations</span>
+          </li>
+          <li>
+            <span class="fact-value">Étude &amp; déploiement</span>
+            <span class="fact-label">Accompagnement complet</span>
+          </li>
+        </ul>
       </div>
     </section>
 

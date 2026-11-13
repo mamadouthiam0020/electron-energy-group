@@ -39,7 +39,7 @@
   <meta name="apple-mobile-web-app-title" content="Electron Energy Group">
   <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
 {
@@ -118,11 +118,43 @@
   </header>
 
   <main id="contenu">
-    <section class="page-hero">
-      <div class="container">
-        <p class="kicker">Nos réalisations</p>
-        <h1>Des projets concrets, sur le terrain.</h1>
-        <p class="lead">Stations de recharge, projets pilotes, formations : découvrez quelques-uns des déploiements menés par EEG au Sénégal.</p>
+    <section class="page-hero" aria-labelledby="titre-heros">
+      <div class="hero-backdrop" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/hero-realisations.avif" type="image/avif">
+          <source srcset="assets/img/hero-realisations.webp" type="image/webp">
+          <img src="assets/img/hero-realisations.jpg" alt="" width="1536" height="1024" fetchpriority="high" decoding="async">
+        </picture>
+        <span class="hero-glow hero-glow--one"></span>
+        <span class="hero-glow hero-glow--two"></span>
+        <span class="hero-grid-lines"></span>
+      </div>
+
+      <div class="container page-hero-inner">
+        <div class="page-hero-copy">
+          <p class="kicker">Nos réalisations</p>
+          <h1 id="titre-heros">Des projets concrets, <em>sur le terrain.</em></h1>
+          <p class="lead">Stations de recharge, projets pilotes, formations : découvrez quelques-uns des déploiements menés par EEG au Sénégal.</p>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="expertises.html">Découvrir nos expertises</a>
+            <a class="btn btn--ghost" href="contact.html">Nous contacter</a>
+          </div>
+        </div>
+
+        <ul class="page-hero-facts" aria-label="Repères">
+          <li>
+            <span class="fact-value">1<sup>re</sup></span>
+            <span class="fact-label">Station FAST CHARGING à Dakar</span>
+          </li>
+          <li>
+            <span class="fact-value">22 kW</span>
+            <span class="fact-label">Borne Schneider Electric</span>
+          </li>
+          <li>
+            <span class="fact-value">Sénégal</span>
+            <span class="fact-label">Déploiements terrain</span>
+          </li>
+        </ul>
       </div>
     </section>
 

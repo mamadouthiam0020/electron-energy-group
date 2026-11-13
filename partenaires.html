@@ -39,7 +39,7 @@
   <meta name="apple-mobile-web-app-title" content="Electron Energy Group">
   <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
 {
@@ -118,11 +118,43 @@
   </header>
 
   <main id="contenu">
-    <section class="page-hero">
-      <div class="container">
-        <p class="kicker">Nos partenaires</p>
-        <h1>Des partenaires mobilisés.</h1>
-        <p class="lead">Opérateurs de mobilité, énergéticiens, institutions et acteurs de la coopération : ensemble, nous faisons avancer la transition énergétique au Sénégal.</p>
+    <section class="page-hero" aria-labelledby="titre-heros">
+      <div class="hero-backdrop" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/lancement-1.avif" type="image/avif">
+          <source srcset="assets/img/lancement-1.webp" type="image/webp">
+          <img src="assets/img/lancement-1.jpg" alt="" width="810" height="1080" fetchpriority="high" decoding="async">
+        </picture>
+        <span class="hero-glow hero-glow--one"></span>
+        <span class="hero-glow hero-glow--two"></span>
+        <span class="hero-grid-lines"></span>
+      </div>
+
+      <div class="container page-hero-inner">
+        <div class="page-hero-copy">
+          <p class="kicker">Nos partenaires</p>
+          <h1 id="titre-heros">Des partenaires <em>mobilisés.</em></h1>
+          <p class="lead">Opérateurs de mobilité, énergéticiens, institutions et acteurs de la coopération : ensemble, nous faisons avancer la transition énergétique au Sénégal.</p>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="contact.html">Devenir partenaire</a>
+            <a class="btn btn--ghost" href="realisations.html">Nos réalisations</a>
+          </div>
+        </div>
+
+        <ul class="page-hero-facts" aria-label="Repères">
+          <li>
+            <span class="fact-value">13</span>
+            <span class="fact-label">Partenaires mobilisés</span>
+          </li>
+          <li>
+            <span class="fact-value">Public &amp; privé</span>
+            <span class="fact-label">Coopération</span>
+          </li>
+          <li>
+            <span class="fact-value">Sénégal</span>
+            <span class="fact-label">Terrain d'action</span>
+          </li>
+        </ul>
       </div>
     </section>
 
